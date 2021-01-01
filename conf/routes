@@ -3,6 +3,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
+
 GET     /we                           controllers.HomeController.first
 
 GET     /clubData                          controllers.HomeController.getClubData

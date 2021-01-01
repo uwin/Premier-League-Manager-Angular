@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.Json;
 import play.mvc.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +61,13 @@ public class HomeController extends Controller {
 
         matchListData = (List<Match>) deserialized.get(1);
         List<Match> searchArray = new ArrayList<>();
+
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-M-d");
+        try {
+            LocalDate dateIn = LocalDate.parse(date, dateFormat);
+        } catch (Exception ex) {
+            return ok("ERROR WRONG DATE FORMAT");
+        }
 
         for (Match match :matchListData){
             if (match.getDate().toString().equals(date)){
