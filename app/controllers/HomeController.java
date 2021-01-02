@@ -66,7 +66,7 @@ public class HomeController extends Controller {
 
         matchListData = (List<Match>) deserialized.get(1);
         JsonNode variableName2= Json.toJson(matchListData);
-        return ok(variableName2);
+        return ok(ApplicationUtil.createResponse(variableName2,true));
     }
     public Result getMatchDataDate(String date){
         List <Match> matchListData = new ArrayList<>();
@@ -90,7 +90,7 @@ public class HomeController extends Controller {
         }
 
         JsonNode variableName2= Json.toJson(searchArray);
-        return ok(variableName2);
+        return ok(ApplicationUtil.createResponse(variableName2,true));
     }
     public Result genarateMatch() {
         PremierLeagueManager club = PremierLeagueManager.getInstance();
@@ -133,6 +133,7 @@ public class HomeController extends Controller {
                 "\nLengthArray :"+matchListData.size());
     }
     public int generateScore(){
+
         return (int) (Math.random() * ((20 - 1) + 1)) + 1;
     }
     public int generateTeam(){
@@ -152,7 +153,7 @@ public class HomeController extends Controller {
         clublistData.sort((SportsClub::sortGoal));
         Collections.reverse(clublistData);
         JsonNode variableName2= Json.toJson(clublistData);
-        return ok(variableName2);
+        return ok(ApplicationUtil.createResponse(variableName2,true));
     }
     public Result sortWins(){
         List <SportsClub> clublistData= new ArrayList<>();
@@ -163,7 +164,7 @@ public class HomeController extends Controller {
         clublistData.sort((SportsClub::sortWins));
         Collections.reverse(clublistData);
         JsonNode variableName2= Json.toJson(clublistData);
-        return ok(variableName2);
+        return ok(ApplicationUtil.createResponse(variableName2,true));
     }
     public Result sortReset(){
         List <SportsClub> clublistData= new ArrayList<>();
@@ -174,7 +175,7 @@ public class HomeController extends Controller {
         clublistData.sort((SportsClub::sortPointsGoal));
         Collections.reverse(clublistData);
         JsonNode variableName2= Json.toJson(clublistData);
-        return ok(variableName2);
+        return ok(ApplicationUtil.createResponse(variableName2,true));
     }
 
     public Result appSummary() {
