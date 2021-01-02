@@ -19,7 +19,7 @@ public class Serialize implements Serializable {
 			System.out.println("----|");
 
 		} catch (IOException fe){
-			  fe.printStackTrace();
+			System.out.println("//ERROR: "+ fe.toString());
 		}
 	}
 	public ArrayList<Object> deserialize() {
@@ -37,13 +37,14 @@ public class Serialize implements Serializable {
 			System.out.println("----|");
 
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			System.out.println("----|");
+			System.out.println("//ERROR: "+ e);
 			System.out.println("Data not available to load");
 			System.out.println("----|");
 			return deserialized;
 		} catch (Exception c) {
-			c.printStackTrace();
+			System.out.println("//ERROR: "+ c.toString());
 		}
 		return deserialized;
 	}
