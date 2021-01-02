@@ -14,7 +14,13 @@ export class ScreenComponent {
   }
   // with .responce u get just the responce, without it u get with status
   // so we can take action if it's false
-  public methodOne(): void {
+  public getClubPost(): void {
+    this.appService.getclub().subscribe((data: any) => {
+      this.variable = JSON.stringify(data.response);
+    });
+  }
+
+  public (): void {
     this.appService.getclub().subscribe((data: any) => {
       this.variable = JSON.stringify(data.response);
     });

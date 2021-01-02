@@ -11,9 +11,17 @@ import { Observable } from 'rxjs/index';
  */
 @Injectable()
 export class AppService {
-  private serviceUrl = '/api/summary';
-  private dataPostTestUrl = '/api/postTest';
-  private getclubUrl =    '/clubData';
+  private serviceUrl =          '/api/summary';
+  private dataPostTestUrl =     '/api/postTest';
+
+  private getclubDataUrl =      '/clubData';
+  private getclubDataGoalUrl =  '/clubDataSortGoal ';
+  private getclubDataWinsUrl =  '/clubDataSortWins ';
+  private getclubDataResetUrl = '/clubDataSortReset ';
+
+  private getmatchDataUrl =    '/matchData ';
+  private getmatchDataDateUrl =    '/matchData/: ';
+  private generateMatchUrl =    '/generateMatch ';
 
   constructor(private http: HttpClient) {
   }
@@ -35,8 +43,10 @@ export class AppService {
   }
 
   public getclub(){
-    return this.http.get(this.getclubUrl);
+    return this.http.get(this.getclubDataUrl);
   }
+
+
 
 
 
