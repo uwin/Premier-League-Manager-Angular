@@ -290,12 +290,8 @@ public class GuiJavaFx extends Application {
         window.show();
     }
 
-    public int generateScore(){
-        return (int) (Math.random() * ((20 - 1) + 1)) + 1;
-    }
-    public int generateTeam(){
-        return (int) (Math.random() * (clublistData.size()));
-    }
+    public int generateScore(){ return (int) (Math.random() * ((20 - 1) + 1)) + 1; }
+    public int generateTeam(){ return (int) (Math.random() * (clublistData.size())); }
     public void genarateMatch() {
         PremierLeagueManager club = PremierLeagueManager.getInstance();
 

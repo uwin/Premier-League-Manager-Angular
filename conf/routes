@@ -8,7 +8,9 @@ GET     /we                           controllers.HomeController.first
 
 GET     /clubData                          controllers.HomeController.getClubData
 GET     /matchData                         controllers.HomeController.getMatchData
-GET     /matchData/:date                    controllers.HomeController.getMatchDataDate(date: String)
+GET     /matchData/:date                   controllers.HomeController.getMatchDataDate(date: String)
+GET     /generateMatch                     controllers.HomeController.genarateMatch
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
