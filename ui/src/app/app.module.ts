@@ -5,37 +5,40 @@ import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angu
 
 import { AppComponent } from './app.component';
 import { RouteExampleComponent } from './route-example/route-example.component';
+import { ScreenComponent } from './components/screen/screen.component';
+
 
 import { AppService } from './app.service';
 import { AppHttpInterceptorService } from './http-interceptor.service';
 
-const routes: Routes = [
-  {
-    path: 'java',
-    component: RouteExampleComponent,
-    data: { technology: 'Java' }
-  },
-  {
-    path: 'play',
-    component: RouteExampleComponent,
-    data: { technology: 'Play' }
-  },
-  {
-    path: 'angular',
-    component: RouteExampleComponent,
-    data: { technology: 'Angular' }
-  },
-  {
-    path: '**',
-    redirectTo: '/play',
-    pathMatch: 'full'
-  }
-];
+// const routes: Routes = [
+//   {
+//     path: 'java',
+//     component: RouteExampleComponent,
+//     data: { technology: 'Java' }
+//   },
+//   {
+//     path: 'play',
+//     component: RouteExampleComponent,
+//     data: { technology: 'Play' }
+//   },
+//   {
+//     path: 'angular',
+//     component: RouteExampleComponent,
+//     data: { technology: 'Angular' }
+//   },
+//   {
+//     path: '**',
+//     redirectTo: '/play',
+//     pathMatch: 'full'
+//   }
+// ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RouteExampleComponent
+    RouteExampleComponent,
+    ScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ const routes: Routes = [
       cookieName: 'Csrf-Token',
       headerName: 'Csrf-Token',
     }),
-    RouterModule.forRoot(routes)
+    // RouterModule.forRoot(routes)
   ],
   providers: [
     AppService,

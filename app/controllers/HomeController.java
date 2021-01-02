@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import utils.ApplicationUtil;
 
 
 class AppSummary {
@@ -55,7 +56,7 @@ public class HomeController extends Controller {
 
         clublistData = (List<SportsClub>) deserialized.get(0);
         JsonNode variableName2= Json.toJson(clublistData);
-        return ok(variableName2);
+        return ok(ApplicationUtil.createResponse(variableName2,true));
 
     }
     public Result getMatchData(){

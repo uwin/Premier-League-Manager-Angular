@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/index';
 export class AppService {
   private serviceUrl = '/api/summary';
   private dataPostTestUrl = '/api/postTest';
+  private getclubUrl =    '/clubData';
 
   constructor(private http: HttpClient) {
   }
@@ -32,4 +33,12 @@ export class AppService {
   public sendData(): Observable<any> {
     return this.http.post(this.dataPostTestUrl, {});
   }
+
+  public getclub(){
+    return this.http.get(this.getclubUrl);
+  }
+
+
+
+
 }
