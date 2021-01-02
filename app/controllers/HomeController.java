@@ -11,6 +11,7 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -28,12 +29,6 @@ public class HomeController extends Controller {
      */
     public Result index() {
         return ok(views.html.index.render());
-    }
-    public Result first() {
-        return ok("Heyy");
-    }
-    public Result getList(){
-        return ok();
     }
 
     public Result getClubData(){
@@ -55,7 +50,6 @@ public class HomeController extends Controller {
         JsonNode variableName2= Json.toJson(matchListData);
         return ok(variableName2);
     }
-
     public Result getMatchDataDate(String date){
         List <Match> matchListData = new ArrayList<>();
         Model.Serialize data = new Model.Serialize();
@@ -80,8 +74,6 @@ public class HomeController extends Controller {
         JsonNode variableName2= Json.toJson(searchArray);
         return ok(variableName2);
     }
-
-
     public Result genarateMatch() {
         PremierLeagueManager club = PremierLeagueManager.getInstance();
 
@@ -122,14 +114,53 @@ public class HomeController extends Controller {
                 "\nDate : "+randomDate+
                 "\nLengthArray :"+matchListData.size());
     }
-
     public int generateScore(){
-        return (int) (Math.random() * ((20 - 1) + 1)) + 1; }
+        return (int) (Math.random() * ((20 - 1) + 1)) + 1;
+    }
     public int generateTeam(){
         List <SportsClub> clublistData= new ArrayList<>();
         Model.Serialize data = new Model.Serialize();
         ArrayList <Object> deserialized = data.deserialize();
         clublistData = (List<SportsClub>) deserialized.get(0);
-        return (int) (Math.random() * (clublistData.size())); }
+        return (int) (Math.random() * (clublistData.size()));
+    }
+
+    public Result sortGoal(){
+        List <SportsClub> clublistData= new ArrayList<>();
+        Model.Serialize data = new Model.Serialize();
+        ArrayList <Object> deserialized = data.deserialize();
+        clublistData = (List<SportsClub>) deserialized.get(0);
+
+        clublistData.sort((SportsClub::sortGoal));
+        Collections.reverse(clublistData);
+        JsonNode variableName2= Json.toJson(clublistData);
+        return ok(variableName2);
+    }
+    public Result sortWins(){
+        List <SportsClub> clublistData= new ArrayList<>();
+        Model.Serialize data = new Model.Serialize();
+        ArrayList <Object> deserialized = data.deserialize();
+        clublistData = (List<SportsClub>) deserialized.get(0);
+
+        clublistData.sort((SportsClub::sortWins));
+        Collections.reverse(clublistData);
+        JsonNode variableName2= Json.toJson(clublistData);
+        return ok(variableName2);
+    }
+    public Result sortReset(){
+        List <SportsClub> clublistData= new ArrayList<>();
+        Model.Serialize data = new Model.Serialize();
+        ArrayList <Object> deserialized = data.deserialize();
+        clublistData = (List<SportsClub>) deserialized.get(0);
+
+        clublistData.sort((SportsClub::sortPointsGoal));
+        Collections.reverse(clublistData);
+        JsonNode variableName2= Json.toJson(clublistData);
+        return ok(variableName2);
+    }
+
+
+
+
 
 }
