@@ -15,6 +15,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+
+class AppSummary {
+    private String content;
+
+    AppSummary(String content) {
+        this.content = content;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+}
+
 /**
  * This controller contains an action to handle HTTP requests
  * to the application's home page.
@@ -157,6 +174,16 @@ public class HomeController extends Controller {
         Collections.reverse(clublistData);
         JsonNode variableName2= Json.toJson(clublistData);
         return ok(variableName2);
+    }
+
+    public Result appSummary() {
+        JsonNode jsonNode = Json.toJson(new AppSummary("IIT Java Play-Angular Session (Week 3)"));
+        return ok(jsonNode).as("application/json");
+    }
+
+    public Result postTest() {
+        JsonNode jsonNode = Json.toJson(new AppSummary("Sample Post Request => Data has been sent successfully"));
+        return ok(jsonNode).as("application/json");
     }
 
 

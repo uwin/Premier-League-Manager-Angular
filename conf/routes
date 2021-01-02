@@ -12,5 +12,9 @@ GET     /matchData                         controllers.HomeController.getMatchDa
 GET     /matchData/:date                   controllers.HomeController.getMatchDataDate(date: String)
 GET     /generateMatch                     controllers.HomeController.genarateMatch
 
+GET     /api/summary                        controllers.HomeController.appSummary
+POST    /api/postTest                       controllers.HomeController.postTest()
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
