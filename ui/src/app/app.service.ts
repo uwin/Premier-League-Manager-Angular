@@ -14,13 +14,13 @@ export class AppService {
   private serviceUrl =          '/api/summary';
   private dataPostTestUrl =     '/api/postTest';
 
-  private getclubDataUrl =      '/clubData';
-  private getclubDataGoalUrl =  '/clubDataSortGoal ';
-  private getclubDataWinsUrl =  '/clubDataSortWins ';
-  private getclubDataResetUrl = '/clubDataSortReset ';
+  private getClubDataUrl =      '/clubData';
+  private clubDataGoalUrl =  '/clubDataSortGoal ';
+  private clubDataWinsUrl =  '/clubDataSortWins ';
+  private clubDataResetUrl = '/clubDataSortReset ';
 
-  private getmatchDataUrl =    '/matchData ';
-  private getmatchDataDateUrl =    '/matchData/: ';
+  private getMatchDataUrl =    '/matchData ';
+  private getMatchDateUrl =    '/matchData/: ';
   private generateMatchUrl =    '/generateMatch ';
 
   constructor(private http: HttpClient) {
@@ -42,8 +42,27 @@ export class AppService {
     return this.http.post(this.dataPostTestUrl, {});
   }
 
-  public getclub(){
-    return this.http.get(this.getclubDataUrl);
+  public getClub(){
+    return this.http.get(this.getClubDataUrl);
+  }
+  public clubDataGoal(){
+    return this.http.get(this.clubDataGoalUrl);
+  }
+  public clubDataWins(){
+    return this.http.get(this.clubDataWinsUrl);
+  }
+  public clubDataReset(){
+    return this.http.get(this.clubDataResetUrl);
+  }
+
+  public getMatch(){
+    return this.http.get(this.getMatchDataUrl);
+  }
+  public getMatchDate(){
+    return this.http.get(this.getMatchDateUrl);
+  }
+  public generateMatch(){
+    return this.http.get(this.generateMatchUrl);
   }
 
 
