@@ -4,11 +4,12 @@ table {
 
 div.match-button{
   flex-direction: row;
+  float: left;
 }
 
 div.table-contain{
   max-height: 300px;
-  min-height: 280px;
+  min-height: 300px;
   overflow: auto;
 }
 

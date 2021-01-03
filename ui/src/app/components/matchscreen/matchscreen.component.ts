@@ -14,7 +14,7 @@ export class MatchscreenComponent implements OnInit {
   variable8: String;
   date: String;
   dateget: String;
-  datain: Match;
+  datain: String = 'No Recent Match';
 
   matchListitle: string[] = ['date', 'teamAName', 'teamAScore', 'teamBName','teamBScore'];
   private matchList: { date: any; teamAName: any; teamAScore: any; teamBName: any; teamBScore: any }[];
@@ -56,7 +56,7 @@ export class MatchscreenComponent implements OnInit {
   }
   public generateMatchPost(): void {
     this.appService.generateMatch().subscribe((data: any) => {
-      this.datain = (data);
+      this.datain = JSON.stringify(data.response);
       this.getMatchPost()
     });
   }

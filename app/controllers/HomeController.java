@@ -140,7 +140,7 @@ public class HomeController extends Controller {
         matchListData.add(genMatch);
         Serialize load = new Serialize();
         load.serialize(clublistData,matchListData);
-        JsonNode variableName2= Json.toJson(genMatch);
+        JsonNode variableName2= Json.toJson(genMatch.toString());
         return ok(ApplicationUtil.createResponse(variableName2,true));
     }
     public int generateScore(){
