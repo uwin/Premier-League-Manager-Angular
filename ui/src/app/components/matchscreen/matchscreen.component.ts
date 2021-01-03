@@ -26,7 +26,12 @@ export class MatchscreenComponent implements OnInit {
     this.getMatchPost();
   }
 
+  clickMe(){
+    this.appService.sendClickEvent();
+  }
+
   public getMatchPost(): void {
+    this.appService.sendClickEvent();
     this.appService.getMatch().subscribe((data: any) => {
       this.matchList = data.response.map((match: any) => ({
         date: match.date,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {AppService} from "../../app.service";
+import {Subscription} from "rxjs";
 
 
 
@@ -13,7 +14,7 @@ export class ClubscreenComponent implements OnInit {
   clubListitle: string[] = ['name', 'location', 'pointCount', 'goalsScored','wins','defeat','matchCount'];
   private clubList: { Points: any; Draw: any; Loss: any; Goals: any; Wins: any; Name: any; location: any }[];
 
-
+  clickEventsubscription:Subscription;
 
 
 
@@ -22,8 +23,12 @@ export class ClubscreenComponent implements OnInit {
 
 
   constructor(private appService: AppService) {
+    this.clickEventsubscription=
+      this.appService.getClickEvent().subscribe(()=>{
+      this.getClubPost();
+    })
   }
-
+  count:number=0;
   ngOnInit() {
     this.getClubPost();
   }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs/index';
+import { Observable,Subject } from 'rxjs/index';
 
 
 /**
@@ -10,7 +10,9 @@ import { Observable } from 'rxjs/index';
  *
  * @class AppService.
  */
-@Injectable()
+@Injectable({
+  providedIn: "root"
+})
 export class AppService {
   private serviceUrl =          '/api/summary';
   private dataPostTestUrl =     '/api/postTest';
@@ -25,6 +27,14 @@ export class AppService {
   private getMatchDateUrl =    '/matchDate';
   private generateMatchUrl =    '/generateMatch ';
 
+  private subject = new Subject<any>()
+
+  sendClickEvent() {
+    this.subject.next();
+  }
+  getClickEvent(): Observable<any>{
+    return this.subject.asObservable();
+  }
 
   constructor(private http: HttpClient) {
   }
