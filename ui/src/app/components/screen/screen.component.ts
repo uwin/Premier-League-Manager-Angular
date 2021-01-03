@@ -112,7 +112,6 @@ export class ScreenComponent {
         teamBName: match.teamBName,
         teamBScore: match.teamBScore,
       }))
-      this.getMatchPost()
     });
   }
   public getdatep(){

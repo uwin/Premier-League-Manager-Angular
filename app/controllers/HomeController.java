@@ -125,12 +125,14 @@ public class HomeController extends Controller {
         matchListData.add(club.addMatch(randomDate, oneClub, oneClubScore, twoClub, twoClubScore));
         Serialize load = new Serialize();
         load.serialize(clublistData,matchListData);
-        return ok("Team A :"+oneClub.getName()+
-                "\nTeam A Score :"+oneClubScore+
-                "\nTeam B :"+twoClub.getName()+
-                "\nTeam B Score :"+twoClubScore+
-                "\nDate : "+randomDate+
-                "\nLengthArray :"+matchListData.size());
+        JsonNode variableName2= Json.toJson(matchListData);
+        return ok(ApplicationUtil.createResponse(variableName2,true));
+//        return ok("Team A :"+oneClub.getName()+
+//                "\nTeam A Score :"+oneClubScore+
+//                "\nTeam B :"+twoClub.getName()+
+//                "\nTeam B Score :"+twoClubScore+
+//                "\nDate : "+randomDate+
+//                "\nLengthArray :"+matchListData.size());
     }
     public int generateScore(){
 
