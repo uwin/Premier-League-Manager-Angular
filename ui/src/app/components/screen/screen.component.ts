@@ -50,17 +50,41 @@ export class ScreenComponent {
   }
   public clubDataGoalPost(): void {
     this.appService.clubDataGoal().subscribe((data: any) => {
-      this.variable2 = JSON.stringify(data);
+      this.clubList = data.response.map((club: any) => ({
+        name: club.name,
+        Location: club.location,
+        pointCount: club.pointCount,
+        goalsScored: club.goalsScored,
+        wins: club.wins,
+        defeat: club.defeat,
+        matchCount: club.matchCount,
+      }))
     });
   }
   public clubDataWinsPost(): void {
     this.appService.clubDataWins().subscribe((data: any) => {
-      this.variable3 = JSON.stringify(data);
+      this.clubList = data.response.map((club: any) => ({
+        name: club.name,
+        Location: club.location,
+        pointCount: club.pointCount,
+        goalsScored: club.goalsScored,
+        wins: club.wins,
+        defeat: club.defeat,
+        matchCount: club.matchCount,
+      }))
     });
   }
   public clubDataResetPost(): void {
     this.appService.clubDataReset().subscribe((data: any) => {
-      this.variable4 = JSON.stringify(data);
+      this.clubList = data.response.map((club: any) => ({
+        name: club.name,
+        Location: club.location,
+        pointCount: club.pointCount,
+        goalsScored: club.goalsScored,
+        wins: club.wins,
+        defeat: club.defeat,
+        matchCount: club.matchCount,
+      }))
     });
   }
   public getMatchPost(): void {
@@ -81,7 +105,14 @@ export class ScreenComponent {
   }
   public generateMatchPost(): void {
     this.appService.generateMatch().subscribe((data: any) => {
-      this.variable7 = JSON.stringify(data);
+      this.matchList = data.response.map((match: any) => ({
+        date: match.date,
+        teamAName: match.teamAName,
+        teamAScore: match.teamAScore,
+        teamBName: match.teamBName,
+        teamBScore: match.teamBScore,
+      }))
+      this.getMatchPost()
     });
   }
   public getdatep(){
