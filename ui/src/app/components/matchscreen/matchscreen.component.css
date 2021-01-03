@@ -7,6 +7,10 @@ div.match-button{
   float: left;
 }
 
+Button{
+  margin: 10px;
+}
+
 div.table-contain{
   max-height: 300px;
   min-height: 300px;

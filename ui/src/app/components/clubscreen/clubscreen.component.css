@@ -6,6 +6,10 @@ div.club-button{
   flex-direction: row;
   float: left;
 }
+Button{
+  margin-right: 20px;
+  margin-top: 20px;
+}
 
 div.table-contain{
   max-height: 300px;
