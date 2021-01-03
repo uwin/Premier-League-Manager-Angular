@@ -9,7 +9,7 @@ import {AppService} from "../../app.service";
 })
 export class ClubscreenComponent implements OnInit {
   clubListitle: string[] = ['name', 'location', 'pointCount', 'goalsScored','wins','defeat','matchCount'];
-  private clubList: { Points: any; Draw: any; Loss: any; Goals: any; Wins: any; Name: any; Location: any }[];
+  private clubList: { Points: any; Draw: any; Loss: any; Goals: any; Wins: any; Name: any; location: any }[];
 
   constructor(private appService: AppService) {
   }
@@ -21,7 +21,7 @@ export class ClubscreenComponent implements OnInit {
     this.appService.getClub().subscribe((data: any) => {
       this.clubList = data.response.map((club: any) => ({
         name: club.name,
-        Location: club.location,
+        location: club.location,
         pointCount: club.pointCount,
         goalsScored: club.goalsScored,
         wins: club.wins,
@@ -34,7 +34,7 @@ export class ClubscreenComponent implements OnInit {
     this.appService.clubDataGoal().subscribe((data: any) => {
       this.clubList = data.response.map((club: any) => ({
         name: club.name,
-        Location: club.location,
+        location: club.location,
         pointCount: club.pointCount,
         goalsScored: club.goalsScored,
         wins: club.wins,
@@ -47,7 +47,7 @@ export class ClubscreenComponent implements OnInit {
     this.appService.clubDataWins().subscribe((data: any) => {
       this.clubList = data.response.map((club: any) => ({
         name: club.name,
-        Location: club.location,
+        location: club.location,
         pointCount: club.pointCount,
         goalsScored: club.goalsScored,
         wins: club.wins,
@@ -60,7 +60,7 @@ export class ClubscreenComponent implements OnInit {
     this.appService.clubDataReset().subscribe((data: any) => {
       this.clubList = data.response.map((club: any) => ({
         name: club.name,
-        Location: club.location,
+        location: club.location,
         pointCount: club.pointCount,
         goalsScored: club.goalsScored,
         wins: club.wins,

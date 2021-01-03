@@ -1,3 +1,6 @@
 .post-request-test {
   padding-top: 1rem;
 }
+div.contain{
+  flex-direction: column;
+}

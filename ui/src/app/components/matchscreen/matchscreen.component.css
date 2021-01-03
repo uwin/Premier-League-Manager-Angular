@@ -1,18 +1,17 @@
 table {
-  width: 30%;
-  margin: auto;
+  width: 100%;
 }
 
-div.club-button{
-  padding: 20px;
-  flex-direction: row;
-}
 div.match-button{
-  padding: 20px;
   flex-direction: row;
 }
+
 div.table-contain{
-  margin-top: 10px;
   max-height: 300px;
   overflow: auto;
+}
+
+div.all{
+  margin: 50px;
+  width: 668px;
 }
