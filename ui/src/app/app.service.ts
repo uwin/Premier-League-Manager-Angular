@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/index';
 
+import {ScreenComponent} from './components/screen/screen.component'
 /**
  * Class representing application service.
  *
@@ -58,8 +59,9 @@ export class AppService {
   public getMatch(){
     return this.http.get(this.getMatchDataUrl);
   }
+  private screenComponent: ScreenComponent
   public getMatchDate(){
-    return this.http.get(this.getMatchDateUrl);
+    return this.http.get(this.getMatchDateUrl+this.screenComponent.getdatep());
   }
   public generateMatch(){
     return this.http.get(this.generateMatchUrl);

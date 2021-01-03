@@ -7,9 +7,13 @@ import { AppComponent } from './app.component';
 import { RouteExampleComponent } from './route-example/route-example.component';
 import { ScreenComponent } from './components/screen/screen.component';
 
+import {MatTableModule} from '@angular/material/table'
 
 import { AppService } from './app.service';
 import { AppHttpInterceptorService } from './http-interceptor.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatchscreenComponent } from './components/matchscreen/matchscreen.component';
+import { ClubscreenComponent } from './components/clubscreen/clubscreen.component';
 
 // const routes: Routes = [
 //   {
@@ -39,6 +43,9 @@ import { AppHttpInterceptorService } from './http-interceptor.service';
     AppComponent,
     RouteExampleComponent,
     ScreenComponent,
+    MatchscreenComponent,
+    ClubscreenComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,6 +54,8 @@ import { AppHttpInterceptorService } from './http-interceptor.service';
       cookieName: 'Csrf-Token',
       headerName: 'Csrf-Token',
     }),
+    NoopAnimationsModule,
+    MatTableModule,
     // RouterModule.forRoot(routes)
   ],
   providers: [
@@ -60,4 +69,5 @@ import { AppHttpInterceptorService } from './http-interceptor.service';
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

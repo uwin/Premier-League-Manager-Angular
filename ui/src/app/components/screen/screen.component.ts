@@ -2,6 +2,13 @@ import { Component} from '@angular/core';
 
 import { AppService } from './../../app.service';
 
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
 @Component({
   selector: 'app-screen',
   templateUrl: './screen.component.html',
@@ -15,7 +22,11 @@ export class ScreenComponent {
   variable5: String;
   variable6: String;
   variable7: String;
+  date: String;
   variable8: String;
+
+  clubListitle: string[] = ['name', 'location', 'pointCount', 'goalsScored','wins','defeat','matchCount'];
+  private clubList: { Points: any; Draw: any; Loss: any; Goals: any; Wins: any; Name: any; Location: any }[];
 
   constructor(private appService: AppService) {
   }
@@ -23,7 +34,15 @@ export class ScreenComponent {
   // so we can take action if it's false
   public getClubPost(): void {
     this.appService.getClub().subscribe((data: any) => {
-      this.variable1 = JSON.stringify(data);
+      this.clubList = data.response.map((club: any) => ({
+        Name: club.name,
+        Location: club.location,
+        Points: club.pointCount,
+        Goals: club.goalsScored,
+        Wins: club.wins,
+        Loss: club.defeat,
+        Draw: club.matchCount,
+      }))
     });
   }
   public clubDataGoalPost(): void {
@@ -55,6 +74,9 @@ export class ScreenComponent {
     this.appService.generateMatch().subscribe((data: any) => {
       this.variable7 = JSON.stringify(data);
     });
+  }
+  public getdatep(){
+    return this.date;
   }
   public (): void {
     this.appService.getClub().subscribe((data: any) => {
