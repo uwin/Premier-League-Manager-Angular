@@ -10,10 +10,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
 import utils.ApplicationUtil;
 
 
@@ -65,6 +63,8 @@ public class HomeController extends Controller {
         ArrayList <Object> deserialized = data.deserialize();
 
         matchListData = (List<Match>) deserialized.get(1);
+        matchListData.sort(Comparator.comparing(Match::getDate));
+
         JsonNode variableName2= Json.toJson(matchListData);
         return ok(ApplicationUtil.createResponse(variableName2,true));
     }

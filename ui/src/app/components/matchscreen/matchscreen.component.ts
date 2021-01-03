@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Match} from './Match'
-
 import {AppService} from "../../app.service";
+
+import {Match} from './Match'
 
 @Component({
   selector: 'app-matchscreen',
@@ -37,7 +37,6 @@ export class MatchscreenComponent implements OnInit {
       }))
     });
   }
-
   public getMatchDatePost(): void {
     this.appService.getMatchDate(this.dateget).subscribe((data: any) => {
       // this.variable6 = (data);
@@ -50,20 +49,10 @@ export class MatchscreenComponent implements OnInit {
       }))
     });
   }
-
   public generateMatchPost(): void {
     this.appService.generateMatch().subscribe((data: any) => {
       this.datain = (data);
       this.getMatchPost()
-    });
-  }
-
-  public getdatep(){
-    return this.date;
-  }
-  public (): void {
-    this.appService.getClub().subscribe((data: any) => {
-      this.variable8 = JSON.stringify(data.response);
     });
   }
 
