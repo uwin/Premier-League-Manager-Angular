@@ -19,9 +19,6 @@ export class MatchscreenComponent implements OnInit {
   constructor(private appService: AppService) { }
 
   ngOnInit() {
-  }
-
-  public getMatchPost(): void {
     this.appService.getMatch().subscribe((data: any) => {
       this.matchList = data.response.map((match: any) => ({
         date: match.date,
@@ -32,6 +29,18 @@ export class MatchscreenComponent implements OnInit {
       }))
     });
   }
+
+  // public getMatchPost(): void {
+  //   this.appService.getMatch().subscribe((data: any) => {
+  //     this.matchList = data.response.map((match: any) => ({
+  //       date: match.date,
+  //       teamAName: match.teamAName,
+  //       teamAScore: match.teamAScore,
+  //       teamBName: match.teamBName,
+  //       teamBScore: match.teamBScore,
+  //     }))
+  //   });
+  // }
 
   public getMatchDatePost(): void {
     this.appService.getMatchDate().subscribe((data: any) => {

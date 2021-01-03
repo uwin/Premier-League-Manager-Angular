@@ -15,9 +15,6 @@ export class ClubscreenComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  public getClubPost(): void {
     this.appService.getClub().subscribe((data: any) => {
       this.clubList = data.response.map((club: any) => ({
         name: club.name,
@@ -30,6 +27,20 @@ export class ClubscreenComponent implements OnInit {
       }))
     });
   }
+
+  // public getClubPost(): void {
+  //   this.appService.getClub().subscribe((data: any) => {
+  //     this.clubList = data.response.map((club: any) => ({
+  //       name: club.name,
+  //       location: club.location,
+  //       pointCount: club.pointCount,
+  //       goalsScored: club.goalsScored,
+  //       wins: club.wins,
+  //       defeat: club.defeat,
+  //       matchCount: club.matchCount,
+  //     }))
+  //   });
+  // }
   public clubDataGoalPost(): void {
     this.appService.clubDataGoal().subscribe((data: any) => {
       this.clubList = data.response.map((club: any) => ({
