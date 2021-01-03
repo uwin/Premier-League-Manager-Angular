@@ -27,6 +27,9 @@ export class ScreenComponent {
 
   clubListitle: string[] = ['name', 'location', 'pointCount', 'goalsScored','wins','defeat','matchCount'];
   private clubList: { Points: any; Draw: any; Loss: any; Goals: any; Wins: any; Name: any; Location: any }[];
+  // private matchList: { Points: any; Draw: any; Loss: any; Goals: any; Wins: any; Name: any; Location: any }[];
+  matchListitle: string[] = ['date', 'teamAName', 'teamAScore', 'teamBName','teamBScore'];
+  private matchList: { date: any; teamAName: any; teamAScore: any; teamBName: any; teamBScore: any }[];
 
   constructor(private appService: AppService) {
   }
@@ -35,13 +38,13 @@ export class ScreenComponent {
   public getClubPost(): void {
     this.appService.getClub().subscribe((data: any) => {
       this.clubList = data.response.map((club: any) => ({
-        Name: club.name,
+        name: club.name,
         Location: club.location,
-        Points: club.pointCount,
-        Goals: club.goalsScored,
-        Wins: club.wins,
-        Loss: club.defeat,
-        Draw: club.matchCount,
+        pointCount: club.pointCount,
+        goalsScored: club.goalsScored,
+        wins: club.wins,
+        defeat: club.defeat,
+        matchCount: club.matchCount,
       }))
     });
   }
@@ -62,7 +65,13 @@ export class ScreenComponent {
   }
   public getMatchPost(): void {
     this.appService.getMatch().subscribe((data: any) => {
-      this.variable5 = JSON.stringify(data);
+      this.matchList = data.response.map((match: any) => ({
+        date: match.date,
+        teamAName: match.teamAName,
+        teamAScore: match.teamAScore,
+        teamBName: match.teamBName,
+        teamBScore: match.teamBScore,
+      }))
     });
   }
   public getMatchDatePost(): void {
