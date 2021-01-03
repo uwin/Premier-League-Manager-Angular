@@ -9,7 +9,8 @@ GET     /clubDataSortWins                  controllers.HomeController.sortWins
 GET     /clubDataSortReset                  controllers.HomeController.sortReset
 
 GET     /matchData                         controllers.HomeController.getMatchData
-GET     /matchData/:date                   controllers.HomeController.getMatchDataDate(date: String)
++nocsrf
+POST     /matchDate                      controllers.HomeController.getMatchDataDate(request: Request)
 GET     /generateMatch                     controllers.HomeController.genarateMatch
 
 GET     /api/summary                        controllers.HomeController.appSummary

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/index';
 
-import {MatchscreenComponent} from './components/matchscreen/matchscreen.component'
+
 /**
  * Class representing application service.
  *
@@ -21,8 +21,10 @@ export class AppService {
   private clubDataResetUrl = '/clubDataSortReset ';
 
   private getMatchDataUrl =    '/matchData ';
-  private getMatchDateUrl =    '/matchData/: ';
+
+  private getMatchDateUrl =    '/matchDate';
   private generateMatchUrl =    '/generateMatch ';
+
 
   constructor(private http: HttpClient) {
   }
@@ -59,9 +61,10 @@ export class AppService {
   public getMatch(){
     return this.http.get(this.getMatchDataUrl);
   }
-  private matchscreenComponent: MatchscreenComponent
-  public getMatchDate(){
-    return this.http.get(this.getMatchDateUrl+this.matchscreenComponent.getdatep());
+
+  public getMatchDate(date: String){
+    console.log(date)
+    return this.http.post(this.getMatchDateUrl,{date});
   }
   public generateMatch(){
     return this.http.get(this.generateMatchUrl);

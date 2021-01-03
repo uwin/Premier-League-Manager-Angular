@@ -44,11 +44,13 @@
 <!--  <button (click)="getMatchPost()"> get match</button>-->
   <!--  <h5>Response: {{matchList}}</h5>-->
 
-  <!--  <label></label><textarea #input></textarea>-->
-  <button (click)="getMatchDatePost()"> get match date</button>
-  <!--  Response: {{variable6}}-->
+<!--  <text #input></text>-->
+  <input #inputdate>
+  <button (click)="dateget=inputdate.value;getMatchDatePost()"> Q </button>
+  <button (click)="getMatchPost()"> R </button>
+<!--  <h5>{{variable6}}{{dateget}}</h5>-->
   <button (click)="generateMatchPost()"> gen match </button>
-  <!--  <h5>Response: {{variable7}}</h5>-->
+<!--  <h5>{{datain}}</h5>-->
 </div>
 
 </div>

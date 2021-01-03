@@ -68,8 +68,21 @@ public class HomeController extends Controller {
         JsonNode variableName2= Json.toJson(matchListData);
         return ok(ApplicationUtil.createResponse(variableName2,true));
     }
-    public Result getMatchDataDate(String date){
-        List <Match> matchListData = new ArrayList<>();
+    public Result getMatchDataDate(Http.Request request){
+        String dateFind;
+        JsonNode json = request.body().asJson();
+        if (json == null) {
+            return badRequest("Expecting Json data");
+        } else {
+            dateFind = json.findValue("date").textValue();
+            if (dateFind == null) {
+                return badRequest("Missing parameter [name]");
+            } else {
+                System.out.println(dateFind);
+            }
+        }
+
+        List <Match> matchListData;
         Model.Serialize data = new Model.Serialize();
         ArrayList <Object> deserialized = data.deserialize();
 
@@ -78,17 +91,19 @@ public class HomeController extends Controller {
 
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-M-d");
         try {
-            LocalDate dateIn = LocalDate.parse(date, dateFormat);
+            LocalDate dateIn = LocalDate.parse(dateFind, dateFormat);
         } catch (Exception ex) {
-            return ok("ERROR WRONG DATE FORMAT");
+            return badRequest("ERROR WRONG DATE FORMAT");
         }
 
         for (Match match :matchListData){
-            if (match.getDate().toString().equals(date)){
+            if (match.getDate().toString().equals(dateFind)){
                 searchArray.add(match);
             }
         }
-
+        for(Match mt:searchArray){
+            System.out.println(mt);
+        }
         JsonNode variableName2= Json.toJson(searchArray);
         return ok(ApplicationUtil.createResponse(variableName2,true));
     }
@@ -121,18 +136,12 @@ public class HomeController extends Controller {
 //            System.out.println("repeat");
             twoClub = clublistData.get(generateTeam());
         }
-
-        matchListData.add(club.addMatch(randomDate, oneClub, oneClubScore, twoClub, twoClubScore));
+        Match genMatch = club.addMatch(randomDate, oneClub, oneClubScore, twoClub, twoClubScore);
+        matchListData.add(genMatch);
         Serialize load = new Serialize();
         load.serialize(clublistData,matchListData);
-        JsonNode variableName2= Json.toJson(matchListData);
+        JsonNode variableName2= Json.toJson(genMatch);
         return ok(ApplicationUtil.createResponse(variableName2,true));
-//        return ok("Team A :"+oneClub.getName()+
-//                "\nTeam A Score :"+oneClubScore+
-//                "\nTeam B :"+twoClub.getName()+
-//                "\nTeam B Score :"+twoClubScore+
-//                "\nDate : "+randomDate+
-//                "\nLengthArray :"+matchListData.size());
     }
     public int generateScore(){
 
