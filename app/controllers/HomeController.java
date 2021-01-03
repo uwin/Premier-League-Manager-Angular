@@ -74,7 +74,7 @@ public class HomeController extends Controller {
         if (json == null) {
             return badRequest("Expecting Json data");
         } else {
-            dateFind = json.findValue("date").textValue();
+            dateFind = json.findValue("date").textValue().trim();
             if (dateFind == null) {
                 return badRequest("Missing parameter [name]");
             } else {
