@@ -14,10 +14,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class GuiJavaFx extends Application {
     List<SportsClub> clublistData;
@@ -122,7 +119,7 @@ public class GuiJavaFx extends Application {
         teamBScore.setMinWidth(128);
         teamBScore.setCellValueFactory(new PropertyValueFactory<>("teamBScore"));
 
-
+        matchlistData.sort(Comparator.comparing(Match::getDate));
         matchTable.setItems(dataToTable(matchlistData));
         matchTable.getColumns().add(matchDate);
         matchTable.getColumns().add(teamAName);
@@ -226,6 +223,7 @@ public class GuiJavaFx extends Application {
         genMatch.setOnAction(event -> {
             genarateMatch();
             update();
+            matchlistData.sort(Comparator.comparing(Match::getDate));
             clubTable.setItems(dataToTable(matchlistData));
 
         });
@@ -239,6 +237,7 @@ public class GuiJavaFx extends Application {
         AnchorPane.setTopAnchor(resetButton,20d);
         AnchorPane.setRightAnchor(resetButton, 50d);
         resetButton.setOnAction(event -> {
+            matchlistData.sort(Comparator.comparing(Match::getDate));
             clubTable.setItems(dataToTable(matchlistData));
         });
 
